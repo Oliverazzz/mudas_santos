@@ -13,7 +13,7 @@
   <header>
     <nav class="wrap">
       <a class="brand" href="#top">
-        <img src="img/logo.png" alt="Mudas Santos">
+        <img src="img/logo.webp" alt="Mudas Santos">
         <span>Mudas Santos</span>
       </a>
       <ul class="nav-links">
@@ -40,7 +40,7 @@
       <div class="wrap hero-grid">
         <div>
           <span class="eyebrow">Viveiro de mudas</span>
-          <h1>MUDAS  <em>SANTOS</em></h1>
+          <h1><em>MUDAS</em><span>&nbsp; SANTOS</span></h1>
           <p class="lead">Cultivamos mudas fortes e saudáveis — frutíferas e ornamentais — prontas para transformar seu quintal, sítio ou jardim.</p>
           <div class="hero-actions">
             <a class="btn btn-gold" href="#categorias">Ver catálogo</a>
@@ -54,11 +54,12 @@
         </div>
         <div class="hero-art">
           <div class="hero-blob"></div>
-          <img class="hero-image" src="../img/entradaviveiro.png" alt="Foto do Viveiro Mudas Santos">
+          <img class="hero-image" src="img/entradaviveiro.webp" alt="Foto do Viveiro Mudas Santos">
+          <img class="hero-stack-photo" src="img/outdoor.webp" alt="Mudas no viveiro">
         </div>
       </div>
       <div class="wave">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,45 L1440,80 L0,80 Z" fill="#F6F0DE"/></svg>
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,45 L1440,80 L0,80 Z" fill="#EEE5C9"/></svg>
       </div>
     </section>
 
@@ -106,7 +107,7 @@
           <div class="cat-card reveal modal-trigger" data-target="modal-coqueiros" tabindex="0" role="button">
             <span class="card-arrow">↗</span>
             <div class="ico-img-container">
-              <img class="cat-ico-img" src="../img/cococategoria.png" alt="Coqueiros">
+              <img class="cat-ico-img" src="../img/cococategoria.webp" alt="Coqueiros">
             </div>
             <h3>Coqueiros</h3>
             <p>Espécies anãs e híbridas de alta produção.</p>
@@ -114,7 +115,7 @@
           <div class="cat-card reveal modal-trigger" data-target="modal-diversas" tabindex="0" role="button">
             <span class="card-arrow">↗</span>
             <div class="ico-img-container">
-              <img class="cat-ico-img" src="../img/frutas.png" alt="Frutíferas diversas">
+              <img class="cat-ico-img" src="../img/frutas.webp" alt="Frutíferas diversas">
             </div>
             <h3>Frutíferas diversas</h3>
             <p>Mais de 70 tipos de frutas exóticas e nativas.</p>
@@ -308,7 +309,7 @@
         <button class="close-modal" aria-label="Fechar">&times;</button>
         <div class="list-card-header">
           <div class="modal-ico-img-container">
-            <img class="modal-ico-img" src="img/entradaviveiro.png" alt="Mais fotos">
+            <img class="modal-ico-img" src="img/entradaviveiro.webp" alt="Mais fotos">
           </div>
           <h3>Galeria Completa</h3>
         </div>
@@ -380,21 +381,21 @@
         <div class="diff-grid">
           <div class="diff-item reveal">
             <div class="diff-ico-container">
-              <img class="diff-ico-img" src="../img/mudasaudavel.png" alt="Mudas saudáveis">
+              <img class="diff-ico-img" src="../img/mudasaudavel.webp" alt="Mudas saudáveis">
             </div>
             <h3>Mudas saudáveis</h3>
             <p>Cuidado diário com rega, adubação e controle fitossanitário desde a semente.</p>
           </div>
           <div class="diff-item reveal">
             <div class="diff-ico-container">
-              <img class="diff-ico-img" src="../img/entrega.png" alt="Entrega regional">
+              <img class="diff-ico-img" src="../img/entrega.webp" alt="Entrega regional">
             </div>
             <h3>Entrega regional</h3>
             <p>Levamos suas mudas até você com cuidado no transporte para chegarem intactas.</p>
           </div>
           <div class="diff-item reveal">
             <div class="diff-ico-container">
-              <img class="diff-ico-img" src="../img/atendimento.png" alt="Atendimento próximo">
+              <img class="diff-ico-img" src="../img/atendimento.webp" alt="Atendimento próximo">
             </div>
             <h3>Atendimento próximo</h3>
             <p>Orientação personalizada para escolher e cuidar da muda certa para seu espaço.</p>
@@ -417,7 +418,12 @@
     <!-- DEPOIMENTO -->
     <section class="quote-sec">
       <div class="wrap reveal">
-        <blockquote>“Comprei mudas frutíferas na Mudas Santos e todas pegaram sem dificuldade. Dá pra ver o cuidado em cada uma.”</blockquote>
+        <div class="review-rating" aria-label="Avaliação de 5 de 5 estrelas no Google">
+          <span class="review-stars" aria-hidden="true">★★★★★</span>
+          <span class="google-source"><span class="google-logo" aria-hidden="true">G</span> Google</span>
+        </div>
+        <blockquote>“Mudas de excelente qualidade, atendimento nota 10! Recomendo.”
+        </blockquote>
         <cite>— Cliente Mudas Santos</cite>
       </div>
     </section>
@@ -649,24 +655,25 @@
       document.body.style.overflow = 'hidden';
     });
 
-    // Fecha o lightbox no clique do X
-    closeLightboxBtn.addEventListener('click', () => {
+    function closeLightbox() {
+      lightboxVideo.pause();
+      lightboxVideo.removeAttribute('src');
+      lightboxVideo.load();
       lightbox.classList.remove('active');
       // Mantém a trava de rolagem se o modal da galeria ainda estiver ativo por baixo
       const isGalleryModalActive = document.getElementById('modal-galeria').classList.contains('active');
       if (!isGalleryModalActive) {
         document.body.style.overflow = '';
       }
-    });
+    }
+
+    // Fecha o lightbox no clique do X
+    closeLightboxBtn.addEventListener('click', closeLightbox);
 
     // Fecha o lightbox ao clicar na área escura (fora da imagem)
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) {
-        lightbox.classList.remove('active');
-        const isGalleryModalActive = document.getElementById('modal-galeria').classList.contains('active');
-        if (!isGalleryModalActive) {
-          document.body.style.overflow = '';
-        }
+        closeLightbox();
       }
     });
   </script>
